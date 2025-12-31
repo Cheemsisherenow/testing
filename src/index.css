@@ -1,0 +1,130 @@
+@import "tailwindcss";
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: white;
+  color: var(--color-dark-100);
+  font-family: var(--font-semibold);
+}
+
+@keyframes fadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@layer components {
+  header{ 
+    @apply absolute z-100 w-full left-0;
+    nav{
+      @apply flex m-5 justify-center;
+      .desktop-nav{
+        @apply hidden md:flex w-full fixed top-0 bg-black min-h-[7vh] items-center justify-center;
+        ul{
+          @apply flex text-blue-300 space-x-4;
+          li{
+            @apply cursor-pointer hover:-translate-y-0.5 transition-all duration-300 ease-in-out;
+          }
+        }
+        img{
+          @apply absolute left-5 top-[1.5vh];
+        }
+      }
+      .mobile-nav{
+        @apply md:hidden fixed top-0 right-0 h-full min-w-[20vh] border-l-1 border-l-neutral-300 bg-black;
+        img{
+          @apply absolute right-2 top-[1.5vh];
+        }
+        .button-open{
+          @apply opacity-100;
+        }
+        .button-close{
+          @apply opacity-0;
+          
+        }
+
+      }
+    
+  }
+  }
+  #intro{
+    span{
+      @apply font-[corpta] mt-1 font-semibold;
+    }
+    @apply flex mt-[0vh] h-[100vh] text-9xl flex-col justify-center items-center;
+    
+    .p-container{
+      @apply flex mt-[7vh] w-full justify-evenly overflow-hidden;
+    }
+    .p1{
+      @apply flex flex-row space-x-4;
+
+      span{
+        @apply inline-block;
+      }
+      
+      .o-container{
+        @apply relative h-1 flex flex-col;
+        #s2{
+          @apply relative;
+        }
+
+        #gear{
+          @apply absolute left-0 top-0 mt-4.5;
+        }
+      }
+
+    }
+    .p2{
+      @apply flex flex-row mt-30 space-x-4;
+      
+      .clone-container1{
+        @apply relative flex flex-col overflow-hidden;
+
+        span{
+          @apply inline-block;
+        }
+
+        #sc5{
+          @apply absolute left-2 top-0;
+        }
+        #sc7{
+          @apply absolute left-0 top-0;
+        }
+        #sd7{
+          @apply absolute left-0 top-0;
+        }
+        #sd5{
+          @apply absolute left-0 top-0;
+        }
+      }
+      .clone-container2{
+        @apply relative flex flex-col overflow-hidden;
+
+        span{
+          @apply inline-block;
+        }
+
+        #sc6{
+          @apply absolute left-0 top-0;
+        }
+        #sd6{
+          @apply absolute left-0 top-0;
+        }
+      }
+    }
+    
+  }
+  #showcase{
+    @apply relative z-0;
+
+    .mask{
+      @apply absolute h-full w-full top-0 lg:-top-20 xl:top-0  z-100;
+    }
+    
+  }
+}
