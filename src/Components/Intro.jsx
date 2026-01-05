@@ -9,7 +9,7 @@ import Gear2 from "./models/Gear2"
 import { PresentationControls, Html, OrbitControls } from '@react-three/drei';
 import Lights from "./models/Lights"
 
-
+//FIGURE OUT HOW TO ALIGN THE FRC
 gsap.registerPlugin(MotionPathPlugin)
 const Intro = ()=>{
 
@@ -60,26 +60,56 @@ const Intro = ()=>{
             tl2.add(roll2,0)
         })
 
-       
 
+       
+        
         tl.from("#s1",{ opacity: 0, y: 150, duration: 1, rotateX: 180, ease: "back.out(1.5)"})
-        tl.from("#s2",{ y:-150, duration: 1, stagger: 1 , delay: .25, ease: "back.out(1.5)"},"<")
-        tl.from([".clone-container1",".clone-container2"],{ y: 200, duration:1},"<")
+        
+        tl.from("#s2",{ y:-150, duration: 1, stagger: 1 , delay: .25, opacity: 0, ease: "back.out(1.5)"},"<")
+        tl.from([".clone-container1",".clone-container2"],{ y: 200, duration:1, opacity: 0},"<")
+        
         
         tl.from("#s3",{ opacity: 0, x: -250, duration: 1, rotateZ: 360, delay: .5, ease: "back.out(1.5)" }, "<")
+        tl.to(".underline-animation1",{scaleX: 1, duration: 1,},"<")
         tl.from("#s4",{opacity:0, rotateY: 360, ease:"back.out(1.5)", delay: .25}, "<")
+        tl.fromTo(".underline-animation3", 
+            {
+              x: -30,
+              color: '#ff0000', 
+              scaleX: 0,
+              
+            },
+            {
+              x: 0,
+              scaleX: 1.75,
+              color: '#FFA500', 
+              duration: 3,
+              ease: "power2.out"
+            },"<"
+          )
         tl.from("#s8",{ opacity: 0, rotateZ: 120, y: -100,x:-50, duration: 1, ease: "back.out(1.5)"},"<")
         tl.from("#s9",{ opacity: 0, scale: .1, duration: 1, delay: .2, rotateZ: 720, ease: "back.out(1)", x:-300},"<")
+        .to(".underline-animation3", {
+            color: '#b30f04',
+            duration: 5,
+            ease: "power1.in", 
+            
+          }, "<")
         tl.from("#s10",{ opacity: 0, scale: .1, duration: 1, delay: .2, rotateZ: 360, ease: "back.out(1)"},"<")
+        tl.to(".underline-animation2",{scaleX: 1, duration: 1,},"<")
         tl.from("#s11",{ rotateZ: 360, x:900, duration: 1.5, delay: .5},"<")
         
         
-        tl.to("#s2",{y:-200, delay: 1.5 },"<")
-        tl.from("#gear",{y:-200,duration:1, ease: "back.out(1.5)", stagger: 1}, "<")
+        tl.to("#s2",{y:-200, delay: 1.5, opacity: 0 },"<")
+        .to(".underline-animation3", {
+            color: '#000000',
+            duration: 5,
+            ease: "power1.in",
+            
+          }, "<");
+        tl.from("#gear",{y:-200,duration:1, opacity: 0, ease: "back.out(1.5)", stagger: 1}, "<")
         
-        
-        
-    
+        let moveUp = true;
             
         gsap.to(tl2, {
             progress: 1,
@@ -87,6 +117,7 @@ const Intro = ()=>{
             ease: "power4.inOut",
             yoyo: true,
             repeat: 1,
+            
             onComplete: () => {
                 tl2.kill()
             }
@@ -105,7 +136,7 @@ const Intro = ()=>{
     })
 
     return( // convert the px to vh
-        <section id = "intro" className="bg-neutral-200 m-0">
+        <section id = "intro" className="bg-linear-to-b from-blue-200 to-neutral-200 m-0">
             <div className="absolute h-126 w-1/2 top-0 right-0 z-0">
 
                 <Canvas camera={{position: [.5,.5,2],fov: 50}} style={{ position: 'absolute', zIndex: 0 }}>
@@ -125,17 +156,20 @@ const Intro = ()=>{
                 
                 <div className="o-container">
                     <span id = "s2" > O </span>
-                    <img src="/gear.webp" id = "gear" className="h-25 w-27"/>
+                    <img src="/gear.webp" id = "gear"/>
                 </div>
                 
                 
                 
                 <span id = "s3" className="z-0"> B </span>
                 <span id = "s4"> O </span>
+                <div className="underline-animation1"></div>
             </div>
+            <span className="relative underline-animation3 text-red-600">-</span>
+            
             <div className="p2">
                 <div className="clone-container1">
-                    <span id = "s5"  > D </span>
+                    <span id = "s5"  > D</span>
                     <span id = "sc5" className="text-[#ee1f27]" > F </span>
                     <span id = "sd5"  > D </span>
                 </div>
@@ -154,8 +188,10 @@ const Intro = ()=>{
                 <span id = "s9"> O </span>
                 <span id = "s10"> N </span>
                 <span id = "s11"> S </span>
-
+                <div className="underline-animation2"></div>
+                
             </div>
+            
 
             </div>
             <div className="absolute h-150 w-1/2 left-0 z-51 " style={{ bottom: '-160px'}}>

@@ -1,10 +1,41 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'Square';
+  src: url('/fonts/Square.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/Orbitron.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} /* USE CORPTA FOR THE VIDEO*/
 body {
   width: 100vw;
+  max-width: 100vw;
+  height: 100%;
   overflow-x: hidden;
-  background-color: white;
+  background-color: black;
   color: var(--color-dark-100);
   font-family: var(--font-semibold);
+  overflow-x: hidden;
+}
+@keyframes slideGradient {
+  0% {
+    opacity: 0;
+    background-position: 100% 0;
+  }
+  20% {
+    opacity: 1;
+    background-position: 100% 0;
+  }
+  100% {
+    opacity: 1;
+    background-position: 0% 0;
+  }
 }
 
 @keyframes fadeUp{
@@ -17,9 +48,10 @@ body {
     transform: translateY(0px);
   }
 }
+
 @layer components {
   header{ 
-    @apply absolute z-100 w-full left-0;
+    @apply font-['Orbitron'] absolute z-100 w-full left-0;
     nav{
       @apply flex m-5 justify-center;
       .desktop-nav{
@@ -35,7 +67,7 @@ body {
         }
       }
       .mobile-nav{
-        @apply md:hidden fixed top-0 right-0 h-full min-w-[20vh] border-l-1 border-l-neutral-300 bg-black;
+        @apply md:hidden fixed top-0 right-0 h-full min-w-[20vh] border-l border-l-neutral-300 bg-black;
         img{
           @apply absolute right-2 top-[1.5vh];
         }
@@ -52,23 +84,29 @@ body {
   }
   }
   #intro{
+    
     span{
-      @apply font-[corpta] mt-1 font-semibold;
+      @apply font-['Orbitron'] mt-1 font-semibold;
     }
-    @apply flex mt-[0vh] h-[100vh] text-9xl flex-col justify-center items-center;
+    @apply leading-none flex mt-[0vh] h-[100vh] text-9xl flex-col justify-center items-center ;
     
     .p-container{
-      @apply flex mt-[7vh] w-full justify-evenly overflow-hidden;
+      @apply flex mt-[7vh] w-full justify-evenly;
     }
+    
     .p1{
-      @apply flex flex-row space-x-4;
+      @apply relative flex flex-row space-x-4 overflow-hidden ;
 
       span{
         @apply inline-block;
+      
+      }
+      .underline-animation1{
+        @apply h-2 absolute w-full left-0 bottom-[40%] bg-black scale-x-0 origin-left;
       }
       
       .o-container{
-        @apply relative h-1 flex flex-col;
+        @apply relative h-1 flex flex-col ;
         #s2{
           @apply relative;
         }
@@ -80,10 +118,14 @@ body {
 
     }
     .p2{
-      @apply flex flex-row mt-30 space-x-4;
+      @apply relative flex items-center mt-30 space-x-4  ;
+      .underline-animation2{
+        @apply h-2 absolute w-full left-0 -bottom-[15%] bg-black scale-x-0 origin-left z-50;
+      }
+      
       
       .clone-container1{
-        @apply relative flex flex-col overflow-hidden;
+        @apply relative flex flex-col  overflow-hidden bottom-[.2rem];
 
         span{
           @apply inline-block;
@@ -103,7 +145,7 @@ body {
         }
       }
       .clone-container2{
-        @apply relative flex flex-col overflow-hidden;
+        @apply flex relative flex-col overflow-hidden top-[.3rem] ; /* FIX THE TOP-1, its unaligned*/
 
         span{
           @apply inline-block;
@@ -119,12 +161,119 @@ body {
     }
     
   }
-  #showcase{
-    @apply relative z-0;
 
-    .mask{
-      @apply absolute h-full w-full top-0 lg:-top-20 xl:top-0  z-100;
+  #showcase{
+    @apply font-['Orbitron'];
+    .back{
+      @apply w-full h-full;
+    }
+    #title{
+      h1{
+        @apply font-['Square'] font-semibold tracking-widest text-3xl lg:text-7xl text-[#1c83f9] m-5 ;
+     }
+     h2{
+      @apply font-['Square'] font-medium text-2xl lg:text-5xl text-[#0ec1f3];
+    }
     }
     
+    
+    .side-container{
+      @apply flex flex-row justify-between w-full h-[80%];
+      
+      
+
+      span{
+        @apply text-[#0403e4];
+      }
+      }
+    @apply relative z-0 font-[cortpa];
+    
+    
+
+    .mask{
+      @apply flex absolute h-full w-full inset-0   z-100;
+    }
+    
+      .wrapper{
+        @apply mx-auto p-5 flex justify-around gap-[30vh];
+
+        
+        .side-container2{
+          @apply flex flex-col items-center w-[40vh] gap-[3vh];
+
+        }
+      }
+      
+      
+      
+    }
+    .content{
+      @apply bg-neutral-200 flex flex-col h-[200vh];
+      
+      .s1{
+        @apply flex h-full w-full ;
+        .side-container1{
+          @apply absolute flex flex-col items-center justify-center gap-8  max-w-1/3 right-[12.5%] p-5;
+          
+          h1{
+            @apply font-["Orbitron"] font-semibold tracking-widest text-3xl lg:text-7xl text-[#1c83f9] m-5 ;
+         }
+         h2{
+          @apply font-["Orbitron"] font-semibold  text-2xl lg:text-5xl text-[#1c83f9];
+        }
+        h3{
+          @apply font-["Orbitron"] tracking-widest leading-relaxed font-semibold text-xl; 
+        }
+        }
+        
+        
+      }
+      .s2{
+        @apply flex h-full w-full  mt-5;
+  
+        .side-container2{
+          @apply absolute flex flex-col items-center justify-center gap-8  max-w-1/3 left-[5%] p-5;
+        }
+        h1{
+          @apply font-["Orbitron"] font-semibold tracking-widest text-3xl lg:text-7xl text-[#1c83f9] m-5 ;
+       }
+       h2{
+        @apply font-["Orbitron"] font-semibold  text-2xl lg:text-5xl text-[#1c83f9];
+      }
+      h3{
+        @apply font-["Orbitron"] tracking-widest leading-relaxed font-semibold text-xl; 
+      }
+      }
+        
+      }
+      #Robot{
+        h1{
+          @apply font-["Orbitron"] font-semibold tracking-widest text-3xl lg:text-7xl text-[#1c83f9] m-5 ;
+       }
+        .card{
+          @apply flex flex-col items-center h-[50vh] w-[20vw]  rounded-4xl shadow-[15px_15px_30px_rgba(255,255,255,.6)]  bg-neutral-200 overflow-hidden;
+
+          h1{
+            @apply font-["Orbitron"] font-semibold text-center tracking-widest text-2xl lg:text-5xl text-black;
+          }
+          h2{
+            @apply font-["Orbitron"] font-semibold text-center text-xl lg:text-4xl text-[#1c83f9];
+          }
+          h3{
+            @apply font-["Orbitron"] tracking-widest text-center leading-relaxed font-semibold text-lg text-black; 
+          }
+        }
+      }
+    #footer{
+      ul{
+        @apply flex text-blue-300 space-x-4;
+        li{
+          @apply cursor-pointer hover:-translate-y-0.5 transition-all duration-300 ease-in-out;
+        }
+      }
+      
+    }
   }
-}
+    
+
+

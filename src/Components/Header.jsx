@@ -18,7 +18,7 @@ const Header = () => {
                         {navLinks.map(({label})=>(
                             <li key = {label} className="relative group">
                                 <a  href = {label}> {label}</a>
-                                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white scale-x-0 origin-center transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-white scale-x-0 origin-center transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
                             </li>
                             
                         ))}
@@ -31,7 +31,7 @@ const Header = () => {
                         {navLinks.map(({label})=>(
                             <li key = {label} className="relative group text-white">
                                 <a  href = {label}> {label}</a>
-                                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white scale-x-0 origin-center transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+                                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-white scale-x-0 origin-center transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
                             </li>
                             
                         ))}
