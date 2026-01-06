@@ -13,7 +13,7 @@ const Header = () => {
         <header>
             <nav>
                 <div className="desktop-nav">
-                    <img className="h-10 w-11" src="/3318-logo.png" alt="3318 logo"/>
+                    <img className="h-10 w-11" src={import.meta.env.BASE_URL + "/3318-logo.png"} alt="3318 logo"/>
                     <ul>
                         {navLinks.map(({label})=>(
                             <li key = {label} className="relative group">

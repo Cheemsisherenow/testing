@@ -12,7 +12,7 @@ import gsap from 'gsap/all';
 
 export default function Gear2(props) {
   const gearRef = useRef(null);
-  const { nodes, materials, scene } = useGLTF('/models/gear2-transformed.glb')
+  const { nodes, materials, scene } = useGLTF(import.meta.env.BASE_URL +'/models/gear2-transformed.glb')
   useGSAP(() => {
     if (gearRef.current) {
      
